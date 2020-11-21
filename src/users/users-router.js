@@ -9,6 +9,7 @@ const jsonParser = express.json()
 const serializeUser = user => ({
   id: user.id,
   user_name: xss(user.user_name),
+  user_bio: xss(user.user_bio),
   user_password: xss(user.user_password),
   date_created: user.date_created,
 })
@@ -24,8 +25,8 @@ usersRouter
       .catch(next)
   })
   .post(jsonParser, (req, res, next) => {
-    const { user_name, user_password  } = req.body
-    const newUser = { user_name, user_password }
+    const { user_name, user_bio, user_password  } = req.body
+    const newUser = { user_name, user_bio, user_password }
 
     for (const [key, value] of Object.entries(newUser)) {
       if (value == null) {
@@ -36,6 +37,7 @@ usersRouter
     }
 
     newUser.user_name = user_name;
+    newUser.user_bio = user_bio;
     newUser.user_password = user_password;
 
     UsersService.insertUser(
@@ -83,8 +85,8 @@ usersRouter
       .catch(next)
   })
   .patch(jsonParser, (req, res, next) => {
-    const { user_name, user_password } = req.body
-    const userToUpdate = { user_name, user_password }
+    const { user_name, user_bio, user_password } = req.body
+    const userToUpdate = { user_name, user_bio, user_password }
 
     const numberOfValues = Object.values(userToUpdate).filter(Boolean).length
     if (numberOfValues === 0)
