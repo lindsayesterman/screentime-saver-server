@@ -3,7 +3,7 @@ const ScrtimesService = {
       return knex.select('*').from('scrtimes')
     },
    
-    insertNote(knex, newScrTime) {
+    insertScrtime(knex, newScrTime) {
       return knex
         .insert(newScrTime)
         .into('scrtimes')
@@ -21,13 +21,13 @@ const ScrtimesService = {
         .first()
     },
   
-    deleteNote(knex, id) {
+    deleteScrtime(knex, id) {
       return knex('scrtimes')
         .where({ id })
         .delete()
     },
   
-    updateNote(knex, id, newScrtimeFields) {
+    updateScrtime(knex, id, newScrtimeFields) {
       return knex('scrtimes')
         .where({ id })
         .update(newScrtimeFields)
