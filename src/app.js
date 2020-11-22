@@ -6,6 +6,8 @@ const helmet = require('helmet')
 const { NODE_ENV } = require('./config')
 const usersRouter = require('./users/users-router')
 const scrtimesRouter = require('./scrtimes/scrtimes-router')
+const friendsRouter = require('./friends/friends-router')
+
 const app = express()
 const morganOption = (NODE_ENV === 'production')
 ? 'tiny'
@@ -16,6 +18,7 @@ app.use(helmet())
 app.use(cors())
 app.use('/api/users', usersRouter)
 app.use('/api/scrtimes', scrtimesRouter)
+app.use('/api/friends', friendsRouter)
 
 
 app.get('/', (req, res) => {
