@@ -1,0 +1,1 @@
+ALTER TABLE friends DROP COLUMN IF EXISTS user_id;
