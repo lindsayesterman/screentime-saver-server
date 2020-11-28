@@ -3,6 +3,7 @@ const express = require('express')
 const xss = require('xss')
 const UsersService = require('./users-service')
 const { requireAuth } = require('../middleware/jwt-auth')
+const bcrypt = require('bcrypt')
 
 const usersRouter = express.Router()
 const jsonParser = express.json()
@@ -14,6 +15,8 @@ const serializeUser = user => ({
   user_password: xss(user.user_password),
   date_created: user.date_created,
 })
+
+const salt = bcrypt.genSaltSync()
 
 usersRouter
   .route('/')
@@ -39,7 +42,7 @@ usersRouter
 
     newUser.user_name = user_name;
     newUser.user_bio = user_bio;
-    newUser.user_password = user_password;
+    newUser.user_password = bcrypt.hashSync(user_password, salt);
 
     UsersService.insertUser(
       req.app.get('db'),

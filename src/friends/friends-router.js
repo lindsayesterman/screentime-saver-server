@@ -9,6 +9,7 @@ const jsonParser = express.json()
 const serializeFriend = friend => ({
   id: friend.id,
   friend_name: xss(friend.friend_name),
+  friend_user_id: xss(friend.friend_user_id),
   date_created: friend.date_created,
 })
 
@@ -23,8 +24,8 @@ friendsRouter
       .catch(next)
   })
   .post(jsonParser, (req, res, next) => {
-    const { friend_name  } = req.body
-    const newFriend = { friend_name }
+    const { friend_name, friend_user_id  } = req.body
+    const newFriend = { friend_name, friend_user_id }
 
     for (const [key, value] of Object.entries(newFriend)) {
       if (value == null) {
@@ -35,6 +36,7 @@ friendsRouter
     }
 
     newFriend.friend_name = friend_name;
+    newFriend.friend_user_id = friend_user_id;
 
     FriendsService.insertFriend(
       req.app.get('db'),
@@ -81,8 +83,8 @@ friendsRouter
       .catch(next)
   })
   .patch(jsonParser, (req, res, next) => {
-    const { friend_name } = req.body
-    const friendToUpdate = { friend_name }
+    const { friend_name, friend_user_id } = req.body
+    const friendToUpdate = { friend_name, friend_user_id }
 
     const numberOfValues = Object.values(friendToUpdate).filter(Boolean).length
     if (numberOfValues === 0)

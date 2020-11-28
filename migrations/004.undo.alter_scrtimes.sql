@@ -1,1 +1,0 @@
-ALTER TABLE scrtimes DROP COLUMN IF EXISTS id;
