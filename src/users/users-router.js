@@ -16,7 +16,7 @@ const serializeUser = user => ({
   date_created: user.date_created,
 })
 
-const salt = bcrypt.genSaltSync()
+//const salt = bcrypt.genSaltSync(4)
 
 usersRouter
   .route('/')
@@ -42,7 +42,7 @@ usersRouter
 
     newUser.user_name = user_name;
     newUser.user_bio = user_bio;
-    newUser.user_password = bcrypt.hashSync(user_password, salt);
+    newUser.user_password = bcrypt.hashSync(user_password, user_password);
 
     UsersService.insertUser(
       req.app.get('db'),
