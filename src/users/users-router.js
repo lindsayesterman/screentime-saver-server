@@ -3,7 +3,7 @@ const express = require('express')
 const xss = require('xss')
 const UsersService = require('./users-service')
 const { requireAuth } = require('../middleware/jwt-auth')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 
 const usersRouter = express.Router()
 const jsonParser = express.json()
