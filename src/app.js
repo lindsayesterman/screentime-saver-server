@@ -20,10 +20,6 @@ app.use("/api/scrtimes", scrtimesRouter);
 app.use("/api/friends", friendsRouter);
 app.use("/api/auth", authRouter);
 
-app.get("/", (req, res) => {
-  res.send("Hello, world!");
-});
-
 app.use(function errorHandler(error, req, res, next) {
   let response;
   if (NODE_ENV === "production") {

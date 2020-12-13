@@ -21,13 +21,6 @@ describe("Endpoints", function () {
 
   afterEach('cleanup',() => db.raw('TRUNCATE users, friends, scrtimes RESTART IDENTITY CASCADE'))
   
-
-  describe("App", () => {
-    it('GET / responds with 200 containing "Hello, world!"', () => {
-      return supertest(app).get("/").expect(200, "Hello, world!");
-    });
-  });
-
     context("Given there are users in the database", () => {
       const testUsers = makeUsersArray();
 
