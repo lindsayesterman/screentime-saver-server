@@ -22,21 +22,49 @@ function makeUsersArray() {
   function makeFriendsArray() {
     return [
       {
-        id: 308,
+        id: 1,
         friend_name: "thefriendsam.gamgee@shire.com",
-        friend_user_id: "8",
+        friend_user_id: "4",
         date_created: "2029-01-22T16:28:32.615Z",
       },
       {
-        id: 309,
+        id: 2,
         friend_name: "peregrin.took@shire.com",
-        friend_user_id: "9",
+        friend_user_id: "5",
         date_created: "2100-05-22T16:28:32.615Z",
+      },
+    ];
+  }
+
+  function makeScrtimesArray() {
+    return [
+      {
+        id: 1,
+        day_1: "6",
+        day_2: "2",
+        day_3: "4",
+        day_4: "4",
+        day_5: "5",
+        day_6: "3",
+        day_7: "6",
+        user_id: null
+      },
+      {
+        id: 2,
+        day_1: "3",
+        day_2: "4",
+        day_3: "2",
+        day_4: "3",
+        day_5: "4",
+        day_6: "5",
+        day_7: "4",
+        user_id: null
       },
     ];
   }
 
   module.exports = {
     makeUsersArray,
-    makeFriendsArray
+    makeFriendsArray,
+    makeScrtimesArray
   }

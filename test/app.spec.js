@@ -1,6 +1,6 @@
 const app = require("../src/app");
 const knex = require("knex");
-const { makeUsersArray, makeFriendsArray } = require('./app.fixtures')
+const { makeUsersArray, makeFriendsArray, makeScrtimesArray } = require('./app.fixtures')
 
 describe("Endpoints", function () {
   let db;
@@ -49,6 +49,18 @@ describe("Endpoints", function () {
   
         it("responds with 200 and all of the friends", () => {
           return supertest(app).get("/api/friends").expect(200, testFriends);
+        });
+      });
+
+      context("Given there are scrtimes in the database", () => {
+        const testScrtimes = makeScrtimesArray();
+  
+        beforeEach("insert scrtimes", () => {
+          return db.into("scrtimes").insert(testScrtimes);
+        });
+  
+        it("responds with 200 and all of the scrtimes", () => {
+          return supertest(app).get("/api/scrtimes").expect(200, testScrtimes);
         });
       });
   
