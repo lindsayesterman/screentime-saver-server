@@ -2,7 +2,6 @@ const path = require('path')
 const express = require('express')
 const xss = require('xss')
 const FriendsService = require('./friends-service')
-
 const friendsRouter = express.Router()
 const jsonParser = express.json()
 
@@ -26,7 +25,11 @@ friendsRouter
   .post(jsonParser, (req, res, next) => {
     const { friend_name, friend_user_id  } = req.body
     const newFriend = { friend_name, friend_user_id }
-
+    // console.log(req.get("authToken"))
+    // if (!req.get("authToken")){
+    //   res.redirect("http://localhost:3000/")
+    //   return;
+    // }
     for (const [key, value] of Object.entries(newFriend)) {
       if (value == null) {
         return res.status(400).json({
