@@ -3,5 +3,5 @@ module.exports = {
     NODE_ENV: process.env.NODE_ENV || 'development',
     DATABASE_URL: process.env.DATABASE_URL || 'postgresql://bradleyesterman@localhost/screentime_saver',
     TEST_DATABASE_URL: process.env.TEST_DATABASE_URL || 'postgresql://bradleyesterman@localhost/test_screentime_saver',
-    JWT_SECRET: process.env.JWT_SECRET || 'test-jwt-secret',
+    JWT_SECRET: process.env.JWT_SECRET || 'authToken',
   }
