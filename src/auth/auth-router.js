@@ -4,8 +4,7 @@ const AuthService = require("./auth-service");
 const authRouter = express.Router();
 const jsonBodyParser = express.json();
 
-authRouter
-.post("/login", jsonBodyParser, (req, res, next) => {
+authRouter.post("/login", jsonBodyParser, (req, res, next) => {
   const { user_name, user_password } = req.body;
   const loginUser = { user_name, user_password };
 
@@ -22,14 +21,8 @@ authRouter
         return res.status(400).json({
           error: "Incorrect user_name or user_password",
         });
-      /*else if (loginUser.user_password === dbUser.user_password){
-          console.log("its a match")
-          return res.status(200).json({
-            error: 'none',
-          })
-        }*/ else {
-          console.log(loginUser.user_password,
-          dbUser.user_password)
+      else {
+        console.log(loginUser.user_password, dbUser.user_password);
         const compareMatch = AuthService.comparePasswords(
           loginUser.user_password,
           dbUser.user_password
@@ -46,7 +39,7 @@ authRouter
           authToken: AuthService.createJwt(sub, payload),
           userId: dbUser.id,
           user_name: dbUser.user_name,
-          user_bio:dbUser.user_bio
+          user_bio: dbUser.user_bio,
         });
       }
     })

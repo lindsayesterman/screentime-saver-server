@@ -24,13 +24,9 @@ friendsRouter
   })
   .post(jsonParser, (req, res, next) => {
     console.log(req.user)
-    const { friend_name, friend_user_id  } = req.body
-    const newFriend = { friend_name, friend_user_id, user_id:req.user_id }
-    // console.log(req.get("authToken"))
-    // if (!req.get("authToken")){
-    //   res.redirect("http://localhost:3000/")
-    //   return;
-    // }
+    const { friend_name, friend_user_id, user_id  } = req.body
+    const newFriend = { friend_name, friend_user_id, user_id:req.user.id }
+
     for (const [key, value] of Object.entries(req.body)) {
       if (value == null) {
         return res.status(400).json({

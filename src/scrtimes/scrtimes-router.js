@@ -29,8 +29,8 @@ scrtimesRouter
       .catch(next)
   })
   .post(jsonParser, (req, res, next) => {
-    const { day_1, day_2, day_3 , day_4, day_5,day_6, day_7, user_id } = req.body
-    const newScrtime = { day_1, day_2, day_3 , day_4, day_5, day_6, day_7, user_id:req.user_id }
+    const { day_1, day_2, day_3 , day_4, day_5,day_6, day_7, user_id  } = req.body
+    const newScrtime = { day_1, day_2, day_3 , day_4, day_5, day_6, day_7, user_id:req.user.id }
 
     for (const [key, value] of Object.entries(newScrtime)) {
       if (value == null) {
