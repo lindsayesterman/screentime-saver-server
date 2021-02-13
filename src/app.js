@@ -18,8 +18,8 @@ app.use(helmet());
 app.use(cors());
 app.use("/api/users", usersRouter);
 app.use("/api/auth", authRouter);
-app.use(jwtAuth);
 app.use("/api/scrtimes", scrtimesRouter);
+app.use(jwtAuth);
 app.use("/api/friends", friendsRouter);
 
 app.use(function errorHandler(error, req, res, next) {
