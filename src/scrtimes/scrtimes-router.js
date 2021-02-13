@@ -15,7 +15,7 @@ const serializeScrtime = scrtime => ({
   day_5: xss(scrtime.day_5),
   day_6: xss(scrtime.day_6),
   day_7: xss(scrtime.day_7),
-  user_id: scrtime.user_id
+  user_id: scrtime.user_id,
 })
 
 scrtimesRouter

@@ -1,6 +1,6 @@
 const ScrtimesService = {
     getAllScrtimes(knex) {
-      return knex.select('*').from('scrtimes')
+      return knex.select('*').from('scrtimes').orderBy([{column: "date_created", order: "desc"},{column: "id", order: "desc"}])
     },
    
     insertScrtime(knex, newScrTime) {
