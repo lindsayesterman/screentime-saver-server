@@ -25,7 +25,6 @@ friendsRouter
   })
 
   .post(jsonParser, (req, res, next) => {
-    console.log(req.user);
     const { friend_name, friend_user_id, user_id } = req.body;
     const newFriend = { friend_name, friend_user_id, user_id: req.user.id };
 
